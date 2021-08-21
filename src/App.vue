@@ -1,32 +1,53 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<div id="app">
+		<!-- 登录前的 -->
+		<div v-if="!token" class="box">
+			<HeaderLoginBefore v-if="!token"></HeaderLoginBefore>
+			<router-view />
+		</div>
+		<!-- 登录后 -->
+		<div v-else class="main">
+			<HeaderLoginAfter v-if="token"></HeaderLoginAfter>
+			<Menu class="fl" :style="{height:containerHeight}"></Menu>
+			<div class="container" :style="{height:containerHeight}">
+				<router-view/>
+			</div>
+		</div>
+	</div>
 </template>
+<script>
+import HeaderLoginBefore from '@/components/header_login_before.vue';
+import HeaderLoginAfter from '@/components/header_login_after.vue';
+import Menu from '@/components/menu.vue';
+export default {
+	components:{
+		HeaderLoginBefore,
+		HeaderLoginAfter,
+		Menu
+	},
+	data(){
+		return {
+			containerHeight: '',
+			token:''
+		}
+	},
+	watch:{
+		$route(to,from,next){
+			this.token=this.$route.query.token;
+			console.log(window.innerHeight)
+			this.containerHeight=window.innerHeight - 56 + 'px';
+		}
+	},
+	mounted(){
+		this.init();
+	},
+	methods:{
+		init(){
+		}
+	}
+}
+</script>
 
 <style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

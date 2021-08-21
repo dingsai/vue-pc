@@ -1,0 +1,93 @@
+@import './common.less';
+.box{
+    width:100%;
+    height: 100%;
+}
+.main{
+    width:100%;
+    height: 100%;
+    background-color: pink;
+}
+.container{
+    padding-left:170px;
+}
+// 登陆前头部
+.header_before,.header_after{
+    .w100;
+    height:56px;
+    background:@defaultBg;
+    .logo{
+        margin-top:7px;
+    }
+    .menu{
+        height:56px;
+        background:none;
+        li{
+            height:56px;
+            color:#fff;
+            &.is-active{
+                border-bottom:2px solid #1891FF;
+                background:none!important;
+                color:#409EFF!important;
+            }
+        }
+        .el-menu-item:hover{
+            background:none!important;
+            color:#409EFF!important;
+        }
+    }
+    .el-menu.el-menu--horizontal{
+        border-bottom:none;
+    }
+}
+// 登陆后头部
+.header_after{
+    .menu{
+        .fr;
+    }
+    .userInfoCol{
+        .fr;
+        height:56px;
+        img{
+            .fr;
+            display:inline-block;
+            margin-top:13px;
+        }
+        span{
+            .fr;.ml10;.mr20;
+            line-height: 56px;
+            color:#fff;
+        }
+        .icon{
+            .fr;.mr20;
+            font-size:20px;
+            line-height: 56px;
+            color:red;
+        }
+    }
+}
+
+// 登陆前首页
+.login_before_index{
+    .banner{
+        .w100;
+        height: 320px;
+        background:rgb(0, 81, 181);
+        .el-carousel{
+            .w1024;
+            height:320px;
+            margin:auto;
+            .el-carousel__arrow{
+                display: none;
+            }
+            .el-carousel__item{
+                height:320px;
+                img{
+                    .w100;
+                    height: 320px;
+                }
+            }
+        }
+    }
+
+}
