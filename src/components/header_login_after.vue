@@ -13,7 +13,7 @@
 				</el-menu>
 			</el-col>
 			<el-col :span="6" class="userInfoCol">
-				<i class="el-icon-switch-button icon"></i>
+				<i class="el-icon-switch-button icon" @click="loginOut"></i>
 				<span>哆啦A梦</span>
 				<img src="@/assets/images/avatar.jpg" alt="" width="30" height="30">
 			</el-col>
@@ -37,6 +37,11 @@ export default {
 		},
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
+		},
+		loginOut(){
+			this.$router.push({
+				path:'/'
+			})
 		}
 	}
 }
