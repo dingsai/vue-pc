@@ -1,8 +1,8 @@
 <template>
 	<div class="header_before">
-		<el-row>
+		<el-row v-if="!title">
 			<el-col :span="8">
-				<img class="logo" src="@/assets/images/logo.png" alt="企业logo" width="182" height="42">
+				<img class="logo" src="@/assets/images/logo.png" alt="企业logo" width="182" height="42" @click="goHome">
 			</el-col>
 			<el-col :span="16">
 				<el-menu :default-active="activeIndex" class="el-menu-demo menu" mode="horizontal" @select="handleSelect">
@@ -15,11 +15,23 @@
 				</el-menu>
 			</el-col>
 		</el-row>
+		<el-row v-else>
+			<el-col class="header_title">
+				<img class="logo fl" src="@/assets/images/logo.png" alt="企业logo" width="182" height="42" @click="goHome">
+				<span class="fl">{{title}}</span>
+			</el-col>
+		</el-row>
 	</div>
 </template>
 
 <script>
 export default {
+	props:{
+		title:{
+			type: String,
+      		default: null
+		}
+	},
 	data(){
 		return {
 			activeIndex: '1',
@@ -27,21 +39,28 @@ export default {
 	},
 	mounted(){
 		this.init();
+		
 	},
 	methods:{
 		init(){
-
+			
 		},
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
 		},
-		login(){
+		goHome(){
 			this.$router.push({
-				path:'/index',
-				query:{
-					token:true
-				}
+				path:'/'
 			})
+		},
+		login(){
+
+			// this.$router.push({
+			// 	path:'/index',
+			// 	query:{
+			// 		token:true
+			// 	}
+			// })
 		}
 	}
 }

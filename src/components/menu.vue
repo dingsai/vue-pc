@@ -1,31 +1,20 @@
 <template>
     <div class="sidebar-container" :class="{'collapse-width': isCollapse}">
         <div class="menuBar">
-            <el-menu default-active="2" class="el-menu-vertical-demo" text-color="#fff" :collapse="isCollapse">
-                <el-submenu index="1">
-                    <template slot="title">
-                        <i class="el-icon-location"></i>
-                        <span>导航一</span>
-                    </template>
-                    <el-menu-item index="1-1">选项1</el-menu-item>
-                    <el-menu-item index="1-2">选项1</el-menu-item>
-                </el-submenu>
-                <el-menu-item index="2">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">导航二</span>
-                </el-menu-item>
-                <el-menu-item index="3">
-                    <i class="el-icon-document"></i>
-                    <span slot="title">导航三</span>
-                </el-menu-item>
-                <el-submenu index="4">
-                    <template slot="title">
-                        <i class="el-icon-setting"></i>
-                        <span slot="title">导航四</span>
-                    </template>
-                    <el-menu-item index="4-1">选项1</el-menu-item>
-                    <el-menu-item index="4-2">选项1</el-menu-item>
-                </el-submenu>
+            <el-menu :default-active="menuActiveIndex" class="el-menu-vertical-demo" text-color="#fff" :collapse="isCollapse">
+                <div v-for="(item,index) in menuList" :key="item.id" >
+                    <el-menu-item v-if="item.children.length == 0" :index="currentLevelOneIndex + '-' + index.toString()" @click="menuClick(item)">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">{{item.sourceName}}</span>
+                    </el-menu-item>
+                    <el-submenu v-else-if="item.children && item.children.length > 0" :index="index.toString()">
+                        <template slot="title">
+                            <i class="el-icon-setting"></i>
+                            <span slot="title">{{item.sourceName}}</span>
+                        </template>
+                        <el-menu-item v-for="(item1,index1) in item.children" :index="currentLevelOneIndex +'-'+ index.toString()+'-'+index1.toString()" :key="item1.id"  @click="menuClick(item1)">{{item1.sourceName}}</el-menu-item>
+                    </el-submenu>
+                    </div>
             </el-menu>
         </div>
         <img src="../assets/images/iscollapse.png" alt="" class="isCollapsBtn cursor" @click="showMenu">
@@ -33,6 +22,20 @@
 </template>
 <script>
 export default {
+    props:{
+		menuList:{
+			type: Array,
+      		default: null
+		},
+        menuActiveIndex:{
+			type: String,
+      		default: null
+		},
+        currentLevelOneIndex:{
+            type: String,
+      		default: null
+        }
+	},
     data(){
         return {
             isCollapse:false,
@@ -44,6 +47,14 @@ export default {
         },
         showMenu(){
             this.isCollapse=!this.isCollapse;
+        },
+        menuClick(data){
+            this.$router.push({
+                path: data.sourceUrl,
+                query:{
+                    token: true
+                }
+            })
         }
 
     }
@@ -91,14 +102,18 @@ export default {
                 background:rgb(203, 227, 250);
                 color:#409EFF!important;
             }
-            .el-submenu.is-active .el-submenu__title{
+            .el-submenu.is-active{
                 background:rgb(203, 227, 250);
                 color:#409EFF!important;
             }
+            .el-submenu__title{
+                background:rgb(0, 37, 74);
+                color:rgb(191, 203, 217)!important;
+            }
             //设置鼠标悬停时el-submenu的样式
             .el-submenu .el-submenu__title:hover{
-                background-color: rgb(203, 227, 250) !important;
-                color: #409EFF !important;
+                background:rgb(0, 37, 74)!important;
+                 color:#409EFF!important;
                 i {
                     color: #409EFF;
                 }

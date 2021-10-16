@@ -1,0 +1,90 @@
+@import './common.less';
+// 登陆前首页
+.login_before_index{
+    .w100;
+    // background:rgb(0, 81, 181);
+}
+.index_top{
+    height: 320px;
+    .banner{
+        .w100;
+        height: auto;
+        .el-carousel{
+            .w1024;
+            height:320px;
+            margin:auto;
+            .el-carousel__arrow{
+                display: none;
+            }
+            .el-carousel__item{
+                height:320px;
+                img{
+                    .w100;
+                    height: 320px;
+                }
+            }
+        }
+    }
+}
+.loginContainer{
+    width:388px;
+    padding:20px 0;
+    background:#fff;
+    border-radius:10px;
+    right: 0;
+    top:20px;
+    .loginForm{
+        width:324px;
+        .mauto;
+        .loginTabs{
+            .el-tabs__nav{width:100%;}
+            .el-tabs__item{
+                width:50%;
+                text-align: center;
+            }
+            .el-input-group__append{
+                background:none;
+                .el-button,span{
+                    color:@textHighLight;
+                }
+            }
+            .mobilePhone input::-webkit-outer-spin-button,.mobilePhone input::-webkit-inner-spin-button{
+                -webkit-appearance: none;
+            }
+            .mobilePhone input[type="number"]{
+                -webkit-appearance: textfield;
+            }
+        }
+        .forgetPassword{
+            margin-top:18px;
+            ul>li{
+                &:first-child{
+                    border-right: 1px solid #c4c4c4;
+                }
+                padding-right: 8px;
+                line-height: 14px;
+                margin-right: 9px;
+                a{
+                    color:#606266;
+                    .textNoneUnderline;
+                }
+            }
+        }
+    }
+}
+.register{
+    .w1024;
+    .mauto;
+    .el-col{
+        margin:100px auto!important;
+    }
+    [class*=el-col-]{
+        float:unset;
+    }
+    .el-input-group__append{
+        background:none;
+        .el-button,span{
+            color:@textHighLight;
+        }
+    }
+}

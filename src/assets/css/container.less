@@ -1,0 +1,80 @@
+@import './common.less';
+.main{
+    width:100%;
+    height: 100%;
+}
+
+.container{
+    padding-left:170px;
+    .__view{
+        width:100% !important;
+    }
+    .contain{
+        padding:16px;
+        .el-card{
+            border:none;
+        }
+        .title{
+            background:#d0d6e2;
+            padding:5px;
+            height: 24px;
+            .ft14;
+            i{
+                width:3px;
+                height:18px;
+                margin:3px 5px;
+                background:#9eaac4;
+                float: left;
+            }
+            span{
+                float: left;
+                margin-left: 5px;
+                line-height:24px;
+            }
+        }
+        .searchForm{
+            .el-form-item--mini.el-form-item, .el-form-item--small.el-form-item{
+                margin-bottom: 0!important;
+            }
+            .el-row{
+                margin-bottom:16px;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+            .el-select{
+                width:100%;
+            }
+        }
+        .el-table .header-cell{
+            background:#edf1f5;
+            color:#4f4f50;
+        }
+        .el-table__body{
+            width:100% !important;
+        }
+        .__view{
+            width:-webkit-fit-content !important;
+        }
+        
+
+        //滚动条
+        // .el-table__fixed-right{
+        //     right:8px !important;
+        // }
+        // .el-scrollbar__wrap{
+        //     overflow: scroll;
+        // }
+        // ::-webkit-scrollbar{
+        //     width: 8px;
+        //     height: 8px;
+        // }
+        // ::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        //     background: #edf1f5;
+        // }
+        // ::-webkit-scrollbar-thumb{/*滚动条*/
+        //     background:#cccccc;
+        //     border-radius: 4px;
+        // }
+    }
+}
