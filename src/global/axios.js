@@ -11,6 +11,7 @@ let responseArr = [function (data) {
 
 //请求拦截器操作
 let interceptorRequest= (config)=>{
+    console.log(config);
     return config;
 }
 //响应拦截器操作

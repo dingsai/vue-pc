@@ -38,7 +38,7 @@ export default {
 		return {
 			containerHeight: '',
 			containerWidth:'',
-			token:'',
+			token:'123',
 			menuList: [],
 			menuActiveIndex:'',
 			currentLevelOneIndex:'',
@@ -46,7 +46,7 @@ export default {
 	},
 	watch:{
 		$route(to,from,next){
-			this.token=this.$route.query.token;
+			this.token=this.token || this.$route.query.token;
 			this.containerHeight=window.innerHeight - 56 + 'px';
 			this.containerWidth=window.innerWidth - 170 + 'px';
 		}
